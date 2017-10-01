@@ -2,15 +2,17 @@
 /**
  * The ClockDisplay class implements a digital clock display for a
  * European-style 24 hour clock. The clock shows hours and minutes. The 
- * range of the clock is 00:00 (midnight) to 23:59 (one minute before 
+ * range of the clock is 12:00 AM (midnight) to 11:59 PM (one minute before 
  * midnight).
  * 
  * The clock display receives "ticks" (via the timeTick method) every minute
  * and reacts by incrementing the display. This is done in the usual clock
  * fashion: the hour increments when the minutes roll over to zero.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * Exercise 3.39 Convert the 24 hour clock to a 12 hour clock
+ * 
+ * @author Giovanny Ospina
+ * @version 10.1.2017
  */
 public class ClockDisplay
 {
@@ -20,7 +22,7 @@ public class ClockDisplay
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 00:00.
+     * creates a new clock set at 12:00 AM.
      */
     public ClockDisplay()
     {
@@ -78,7 +80,26 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+        if (hours.getValue() == 0)
+        {
+            displayString = Integer.toString(hours.getValue() + 12) + ":" + 
+                        minutes.getDisplayValue() + " am";
+        }
+        else if(hours.getValue() < 12)
+        {
+            displayString = hours.getDisplayValue() + ":" + 
+                        minutes.getDisplayValue() + " am";
+        }
+        else if(hours.getValue() == 12)
+        {
+            displayString = hours.getDisplayValue() + ":" + 
+                        minutes.getDisplayValue() + " pm";
+        }
+        else if(hours.getValue() < 24)
+        {
+            displayString = Integer.toString(hours.getValue() - 12) + ":" + 
+                        minutes.getDisplayValue() + " pm";
+        }
+        
     }
 }
