@@ -7,8 +7,10 @@
  * resulting in display values from 0 to 59. When incremented, the display 
  * automatically rolls over to zero when reaching the limit.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * * Exercise 3.38 Convert the 24 hour clock to a 12 hour clock
+ * 
+ * @author Giovanny Ospina
+ * @version 10.01.2017
  */
 public class NumberDisplay
 {

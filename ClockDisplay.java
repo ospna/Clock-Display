@@ -9,8 +9,10 @@
  * and reacts by incrementing the display. This is done in the usual clock
  * fashion: the hour increments when the minutes roll over to zero.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * Exercise 3.38 Convert the 24 hour clock to a 12 hour clock
+ * 
+ * @author Giovanny Ospina
+ * @version 10.01.2017
  */
 public class ClockDisplay
 {
@@ -20,11 +22,11 @@ public class ClockDisplay
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 00:00.
+     * creates a new clock set at 12:00.
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         updateDisplay();
     }
@@ -36,7 +38,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         setTime(hour, minute);
     }
@@ -78,7 +80,15 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        displayString = hours.getDisplayValue() + ":" + 
+        if (hours.getValue() == 0)
+        { 
+            displayString = (hours.getValue() + 12) + ":" + 
                         minutes.getDisplayValue();
+        }
+        else if (hours.getValue() < 12)
+        {
+            displayString = hours.getDisplayValue() + ":" + 
+                        minutes.getDisplayValue();
+        }
     }
 }
